@@ -1,0 +1,31 @@
+{% if widget.is_initial %}
+{{ widget.initial_text }}: <a href="{{ widget.url }}">{{ widget.value }}</a>    
+
+<input type="checkbox" 
+    name="{{ widget.checkbox_name }}" 
+    value="{{ widget.value|stringformat:'s' }}" 
+    id="{{ widget.checkbox_id }}">
+
+    <label for="{{ widget.checkbox_id }}" >{{ widget.clear_checkbox_label }}</label>
+{% endif %}
+
+<label class="labelFile" 
+    id="django-label-image-view" 
+    for="{{widget.name}}">
+    <strong>Add a file</strong>
+</label>
+
+<input type="{{widget.type}}" 
+    class="inputfile"
+    id="django-input-image-view"
+    name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+<br>
+
+<div id="image-container-view">
+    {% if widget.is_initial %}
+        x<img src="{{widget.url}}" id="image-preview-edit" alt="{{widget.value}}" class="image-preview">    
+    {% endif %}
+    <!-- Here image Preview-->
+</div>
+
+<script type="text/javascript" src="/static/django-image-view/js/admin_button_script.js"></script>
