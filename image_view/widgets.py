@@ -1,28 +1,16 @@
-from django import forms
+from django.forms import widgets
 from django.utils.safestring import mark_safe
-from django.template.loader import render_to_string
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-from .models import Gallery
 
-class ImageViewWidget(forms.Widget):
-    """ Image View Widget """
-
+class ImageView(widgets.Widget):
+    """ Image View widget """
+    
     template_name = 'django-image-view.html'
     clear_checkbox_label = _('Clear')
     initial_text = _('Currently')
     input_text = _('Change')
     type_input = 'file'
-
-    class Media:
-        """ There all styles Image View Wibget """
-        js = (
-            'django-image-view/js/admin_button_script.js',
-        )
-        css = {
-            'all': (
-                'django-image-view/css/admin_button_widget.css',
-            )
-        }
 
     def get_context(self, name, value, attrs):
         context = super().get_context(name, value, attrs)
@@ -39,6 +27,7 @@ class ImageViewWidget(forms.Widget):
             'clear_checkbox_label': self.clear_checkbox_label,
         })
         return context
+
 
     def get_url_image(self,value):
         """
@@ -66,19 +55,3 @@ class ImageViewWidget(forms.Widget):
         Return whether value is considered to be initial value.
         """
         return bool(value and getattr(value, 'url', False))
-    
-
-    def is_changed_value(self,value):
-        """
-        Validatre
-        """
-
-
-class GalleryForm(forms.ModelForm):
-    """ Gallery Form  """
-    image = forms.CharField(widget=ImageViewWidget)
-
-    class Meta:
-        model = Gallery 
-        fields = '__all__'
-
