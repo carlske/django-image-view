@@ -1,11 +1,18 @@
 dist: xenial
 version: '{branch}-{build}'
 language: python
+
 cache: pip
 
 install:
   - pip install pipenv pytest
   - pipenv install
+  - pipenv install coverage tox tox-travis tox-venv
 
 script:
-  - echo "run"
+  - coverage erase
+  - py.test ./image_view/test
+
+after_sucess:
+  - pip install codecov
+  - codecov
