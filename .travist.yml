@@ -1,13 +1,8 @@
-dist: xenial
-version: '{branch}-{build}'
 language: python
-cache: pip
-
-install:
-  - pip install pipenv pytest
-  - pip install --python3
-  - pipenv install
+python:
+  - "3.7"
 
 
+# command to run tests
 script:
-  - echo "run"
+  - echo "demo"
