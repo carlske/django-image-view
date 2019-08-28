@@ -8,10 +8,12 @@ FILE_INPUT_CONTRADICTION = object()
 
 
 class ImageViewWidget(widgets.FileInput):
+    """
+     Class widget for <input> type FileField, show preview file (image)
+    """
     clear_checkbox_label = _('Clear')
     initial_text = _('Currently')
     input_text = _('Change')
-#    template_name = 'django/forms/widgets/clearable_file_input.html'
     template_name = 'django-image-view.html'
 
 
@@ -69,8 +71,10 @@ class ImageViewWidget(widgets.FileInput):
             return False
         return upload
 
+
     def use_required_attribute(self, initial):
         return super().use_required_attribute(initial) and not initial
+
 
     def value_omitted_from_data(self, data, files, name):
         return (
