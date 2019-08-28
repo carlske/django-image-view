@@ -1,31 +1,38 @@
-{% if widget.is_initiaf %}
+{% if widget.is_initial %}
 {{ widget.initial_text }}: <a href="{{ widget.url }}">{{ widget.value }}</a>    
 
-<input type="checkbox" 
-    name="{{ widget.checkbox_name }}" 
-    value="{{ widget.value|stringformat:'s' }}" 
-    id="{{ widget.checkbox_id }}">
+<div id="image-container-view">
+        {% if widget.is_initial %}
+            <img src="{{widget.value.url}}" id="image-preview-edit" alt="{{widget.value}}" class="image-preview" style="width: 35vw; height: 40vh;">    
+        {% endif %}
+        <!-- Here image Preview-->
+    </div>
 
-    <label for="{{ widget.checkbox_id }}" >{{ widget.clear_checkbox_label }}</label>
+<div class="upload-btn-wrapper">
+    <div class="container-clear">
+        <span class="checkmark"></span>
+        <input type="checkbox" 
+            name="{{ widget.checkbox_name }}" 
+            value="{{ widget.value|stringformat:'s' }}" 
+            id="{{ widget.checkbox_id }}">
+        <label for="{{ widget.checkbox_id }}" >{{ widget.clear_checkbox_label }}</label>
+    </div>
 {% endif %}
 
-<label class="labelFile" 
-    id="django-label-image-view" 
-    for="{{widget.name}}">
-    <strong>Add a file</strong>
-</label>
 
-<input type="{{widget.type}}" 
-    class="inputfile"
-    id="django-input-image-view"
-    name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
-<br>
+    <label class="labelFile" 
+        id="django-label-image-view" 
+        for="{{widget.name}}">
+    </label>
 
-<div id="image-container-view">
-    {% if widget.is_initial %}
-        x<img src="{{widget.url}}" id="image-preview-edit" alt="{{widget.value}}" class="image-preview">    
-    {% endif %}
-    <!-- Here image Preview-->
+    <input type="{{widget.type}}" 
+        class="inputfile"
+        id="django-input-image-view"
+        name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+
 </div>
 
+<br>
+
 <script type="text/javascript" src="/static/django-image-view/js/admin_button_script.js"></script>
+<link rel="stylesheet" href="/static/django-image-view/css/admin_button.css"/>
