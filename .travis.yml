@@ -5,7 +5,6 @@ cache: pip
 
 install:
   - pip install pipenv pytest
-  - pip install --python3
   - pipenv install
 
 script:
