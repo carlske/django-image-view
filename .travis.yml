@@ -1,5 +1,4 @@
 dist: xenial
-version: '{branch}-{build}'
 language: python
 
 python:
@@ -15,24 +14,19 @@ install:
   - pipenv install coverage tox tox-travis tox-venv
 
 stages:
-  - testing
   - coverage
-  - lint
+
+script:
+  - coverage erase
+  - tox
 
 jobs:
   include:
-    - stage: testing
+    - stage: coverage
       script:
-        - coverage erase
         - pytest --cov=image_view
         - coverage xml
       after_sucess:
         - pip install codecov
         - codecov
-
-    - stage: coverage
-      script: echo "coverage"
-    
-    - stage: lint
-      script: echo "lint"
     
