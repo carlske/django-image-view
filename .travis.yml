@@ -1,5 +1,4 @@
 dist: xenial
-version: '{branch}-{build}'
 language: python
 
 python:

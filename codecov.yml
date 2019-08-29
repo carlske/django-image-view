@@ -1,9 +1,9 @@
 coverage:
   status:
     patch: off
-    project:
-      default:
+#    project:
+#      default:
         # Minimum test coverage required for pass
-        target: 90%
+#        target: 85%
         # Maximum test coverage change allowed for pass
-        threshold: 20%
+#        threshold: 20%
