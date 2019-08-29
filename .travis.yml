@@ -24,7 +24,7 @@ jobs:
     - stage: testing
       script:
         - coverage erase
-        - py.test ./image_view/test
+        - pytest --cov=image_view
         - coverage xml
       after_sucess:
         - pip install codecov
