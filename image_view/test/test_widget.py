@@ -21,6 +21,20 @@ def test_should_not_get_value():
     """ Test format_value """
     image =  ImageViewWidget()
     assert image.format_value('value') == None
+
+def test_should_get_value():
+    """ Test format_value """
+
+    class MockValue:
+        url = 'url'
+        copy = 'copy'
+
+    image =  ImageViewWidget()
+    mock = MockValue()
+
+    assert image.format_value(mock) is mock
+
+    
     
 def test_should_get_context():
     """ Test get context """
@@ -45,14 +59,18 @@ def test_should_get_context():
 #    assert image.get_context('demo','demo.jpg',{}) == result
     pass
 
+
 def test_should_get_datadict():
     """ Test value_from_datadict """
-    pass
+    image = ImageViewWidget()
+    assert image.value_from_datadict('data',{'data':'img.jpg'},'mock') == None
 
 def test_should_is_required_attribute():
     """ Test use_required_attribute """
-    pass
+    image = ImageViewWidget()
+    assert image.use_required_attribute('mock') == False
 
 def test_should_omitted_data():
     """ value_omitted_from_data """
-    pass
+    image = ImageViewWidget()
+    assert image.value_omitted_from_data('mock',{},'name') == True
