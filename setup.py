@@ -28,4 +28,6 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
+    tests_require=['pytest','pytest-mock'],
+    install_requires=['django>=2.2.4'],
 )
