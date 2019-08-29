@@ -22,13 +22,13 @@ stages:
 jobs:
   include:
     - stage: testing
-    script:
-      - coverage erase
-      - py.test ./image_view/test
-      - coverage xml
-    after_sucess:
-      - pip install codecov
-      - codecov
+      script:
+        - coverage erase
+        - pytest --cov=image_view
+        - coverage xml
+      after_sucess:
+        - pip install codecov
+        - codecov
 
     - stage: coverage
       script: echo "coverage"
@@ -36,4 +36,3 @@ jobs:
     - stage: lint
       script: echo "lint"
     
-
