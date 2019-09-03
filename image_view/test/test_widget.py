@@ -39,26 +39,8 @@ def test_should_get_value():
 def test_should_get_context():
     """ Test get context """
     image = ImageViewWidget()
-    result ={
-        'widget': {
-            'name': 'demo', 
-            'is_hidden': False, 
-            'required': False, 
-            'value': None, 
-            'attrs': {}, 
-            'template_name': 'django-image-view.html', 
-            'type': 'file', 
-            'checkbox_name': 'demo-clear', 
-            'checkbox_id': 'demo-clear_id', 
-            'is_initial': False, 
-            'input_text': 'Change', 
-            'initial_text': 'Currently', 
-            'clear_checkbox_label': 'Clear'
-        }
-    }
-#    assert image.get_context('demo','demo.jpg',{}) == result
-    pass
-
+    context = image.get_context('point', None, attrs={'geom_type': 'POINT2'})
+    assert context['geom_type'] == 'POINT2'
 
 def test_should_get_datadict():
     """ Test value_from_datadict """
