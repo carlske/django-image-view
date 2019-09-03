@@ -29,4 +29,3 @@ jobs:
       after_sucess:
         - pip install codecov
         - codecov
-    

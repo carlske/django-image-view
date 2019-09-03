@@ -21,21 +21,15 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-
-    'axes.middleware.AxesMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'axes.backends.AxesBackend',
-
     'django.contrib.auth.backends.ModelBackend',
 ]
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.MD5PasswordHasher',
 ]
-
-ROOT_URLCONF = 'axes.tests.urls'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -44,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
-
-    'axes',
 ]
 
 TEMPLATES = [
