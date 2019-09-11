@@ -4,7 +4,7 @@
     const imageView = document.querySelector("#django-input-image-view");
     const labelImageView = document.querySelector("#django-label-image-view")
     const imagePreview = document.querySelector("#image-container-view");
-    const imageShowEdit = document.querySelector("#image-preview-edit");
+    let imageShowEdit = document.querySelector("#image-preview-edit");
 
 
      /**
@@ -15,9 +15,12 @@
       */
      let createElementImg = (element,patch) =>{
         const image = document.createElement("img");
+        image.id = "image-preview-edit";
         image.setAttribute("src",patch) 
         image.setAttribute("class","image-preview")       
-        element.appendChild(image);        
+        element.appendChild(image);
+        imageShowEdit = document.querySelector("#image-preview-edit");
+
      }
 
      
@@ -44,11 +47,25 @@
                 if(!isNullInputs(imageShowEdit)){
                     imageShowEdit.setAttribute('src',event.target.result)
                 }else{
-                    createElementImg(imagePreview,e.target.result)
+                    if (!isExistNodeSection(imagePreview)){
+                        console.log(imageShowEdit)
+                        imageShowEdit.setAttribute('src',event.target.result)
+                    }else{
+                        createElementImg(imagePreview,e.target.result)
+                    }
                 }
             });
             reader.readAsDataURL(input.files[0]);
         }
+    }
+
+    /**
+     * @function isExistNodeSection
+     * @description Check if exist nodes in the section 
+     * @param {*} element
+     */
+    let isExistNodeSection = (element) => {
+        return (element.childElementCount >= 1)? false : true
     }
 
 
